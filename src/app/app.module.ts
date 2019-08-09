@@ -11,6 +11,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 //Components imports
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 library.add(fas);
 
@@ -18,7 +19,8 @@ library.add(fas);
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
