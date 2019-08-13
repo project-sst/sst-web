@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+//Modules imports
+import { SettingsModule } from './modules/settings/settings.module';
 //Components imports
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -25,7 +27,8 @@ library.add(fas);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SettingsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
