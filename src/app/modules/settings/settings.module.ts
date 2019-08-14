@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { SettingsRoutingModule } from './settings-routing.module';
 import { GlobalComponent } from './components/global/global.component';
+import { EventTypesComponent } from './components/event-types/event-types.component';
 
 @NgModule({
   declarations: [
-  	GlobalComponent
+  	GlobalComponent,
+  	EventTypesComponent
   ],
   imports: [
     CommonModule,

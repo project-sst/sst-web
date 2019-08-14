@@ -1,5 +1,5 @@
-<div class="row">
-
+<h1 class="text-center">Ajustes tablas parametricas</h1>
+<div class="row">	
 	<div class="card col-12 mt-2">
 	  <div class="card-body">
 	    <h5 class="card-title">Empresas</h5>
@@ -9,22 +9,55 @@
 
 	<div class="card col-12 mt-2">
 	  <div class="card-body">
-	    <h5 class="card-title">Accidentes</h5>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    <h5 class="card-title">Accidentes y ausentismos</h5>
+		  <ul class="list-group list-group-flush">
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/event-types']">Tipos de evento</a>
+		    </li>		  	
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/accident-types']">Tipos de accidente</a>
+		    </li>
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/diagnostics']">Diagnosticos</a>
+		    </li>
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/injury-types']">Tipos de lesión</a>
+		    </li>
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/body-parts']">Partes del cuerpo</a>
+		    </li>		    
+		  </ul>
 	  </div>
 	</div>
 
 	<div class="card col-12 mt-2">
 	  <div class="card-body">
 	    <h5 class="card-title">Indicadores</h5>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		  <ul class="list-group list-group-flush">
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/indicator-types']">Tipos de indicador</a>
+		    </li>
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/information-sources']">Fuentes de información</a>
+		    </li>
+		  </ul>
 	  </div>
 	</div>
 
 	<div class="card col-12 mt-2">
 	  <div class="card-body">
 	    <h5 class="card-title">Actividades</h5>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		  <ul class="list-group list-group-flush">
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/evaluation-systems']">Sistemas de evaluación</a>
+		    </li>
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/suitability']">Idoneidades instructor</a>
+		    </li>
+		    <li class="list-group-item">
+		    	<a [routerLink]="['/settings/evidences']">Evidencias de cumplimiento</a>
+		    </li>
+		  </ul>
 	  </div>
 	</div>	
 
