@@ -10,7 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 //Modules imports
 import { SettingsModule } from './modules/settings/settings.module';
-//Components imports
+//Main components imports
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';

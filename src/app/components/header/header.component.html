@@ -1,24 +1,21 @@
-	<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-	  <div class="px-0">
-	    <div class="row w-100">
-	      <div class="col-2">
-	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" (click)="isShown = !isShown" >
-	          <span class="navbar-toggler-icon"></span>
-	        </button>
-	      </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" (click)="isShown = !isShown" >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-	      <div class="col-10">
-	        <div class="collapse justify-content-end navbar-collapse" [ngClass]="{ 'show': isShown }" id="navbarToggler">
-	          <ul class="navbar-nav mt-2 mt-lg-0">
-	            <li class="nav-item active">
-	              <a class="nav-link" [routerLink]="['/home']" >Inicio</a>
-	            </li>
-	            <li class="nav-item active" *ngFor="let item of menu">
-	              <a class="nav-link" [routerLink]="[item.route]" >{{item.name}}</a>
-	            </li>
-	          </ul>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</nav>
+  <div class="collapse justify-content-end navbar-collapse" [ngClass]="{ 'show': isShown }" id="navbarToggler">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/home']" >Inicio</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']" *ngFor="let item of menu">
+        <a class="nav-link" [routerLink]="[item.route]" >{{item.name}}</a>
+      </li>
+    </ul> 
+  	<ul class="navbar-nav ml-auto">
+      <li class="nav-item" [routerLinkActive]="['active']">
+      	<a class="nav-link" [routerLink]="['/settings']"><fa-icon [icon]="['fas','cog']"></fa-icon></a>
+      </li>
+    </ul>	           	          
+  </div>
+</nav>

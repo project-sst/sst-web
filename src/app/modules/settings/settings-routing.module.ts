@@ -3,8 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { GlobalComponent } from './components/global/global.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: 'global', pathMatch:'full' },
-	{ path: 'global', component: GlobalComponent },
+	{path: 'settings',
+		children: [
+			{ path: '', redirectTo: 'global', pathMatch:'full' },
+			{ path: 'global', component: GlobalComponent }
+		]
+	}
 ];
 
 @NgModule({
