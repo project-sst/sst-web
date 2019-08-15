@@ -1,4 +1,4 @@
-export interface EventType {
+export class EventType {
 	id:number;
 	descripcionTipoEvento:string;
 }

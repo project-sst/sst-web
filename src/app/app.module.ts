@@ -1,6 +1,7 @@
 //Angular imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 //App imports
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +29,8 @@ library.add(fas);
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    SettingsModule
+    FormsModule,
+    SettingsModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

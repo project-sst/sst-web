@@ -8,4 +8,17 @@ import { Observable } from 'rxjs';
 export class SettingsService {
 
   constructor() { }
+
+  public getEventTypes(){
+  	return [
+  		{
+  			id:1,
+  			descripcionTipoEvento: 'Evento 1'
+  		},
+      {
+        id:2,
+        descripcionTipoEvento: 'Evento 2'
+      }      
+  	];
+  }
 }

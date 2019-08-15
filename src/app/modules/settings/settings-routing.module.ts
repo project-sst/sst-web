@@ -9,8 +9,7 @@ const routes: Routes = [
 		children: [
 			{ path: '', redirectTo: 'global', pathMatch:'full' },
 			{ path: 'global', component: GlobalComponent },
-			{ path: 'event-types', component: EventTypesComponent },
-			{ path: '**', redirectTo: 'global', pathMatch: 'full' }
+			{ path: 'event-types', component: EventTypesComponent }			
 		]
 	}
 ];
