@@ -13,9 +13,14 @@
       </li>
     </ul> 
   	<ul class="navbar-nav ml-auto">
-      <li class="nav-item" [routerLinkActive]="['active']">
-      	<a class="nav-link" [routerLink]="['/settings']"><fa-icon [icon]="['fas','cog']"></fa-icon></a>
-      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><fa-icon [icon]="['fas','cog']"></fa-icon></a>
+          <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" [routerLink]="['/settings']">Generales</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+      </li>      
     </ul>	           	          
   </div>
 </nav>
