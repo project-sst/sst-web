@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EventType } from './../../models/event-type.model';
+import { TipoEvento } from './../../models/tipo-evento';
 import { SettingsService } from './../../services/settings.service';
 
 @Component({
@@ -10,16 +10,16 @@ import { SettingsService } from './../../services/settings.service';
 })
 export class EventTypesComponent implements OnInit {
 
-	public tiposEvento:Array<EventType>;
-  public tipoEvento:EventType;
+	public tiposEvento:Array<TipoEvento>;
+  public tipoEvento:TipoEvento;
   public title:string;
   public idx:number = 3;
 
   constructor(
     private _settingsServices:SettingsService
   ) { 
-  	this.tiposEvento = new Array<EventType>();
-    this.tipoEvento = new EventType();
+  	this.tiposEvento = new Array<TipoEvento>();
+    this.tipoEvento = new TipoEvento();
     this.title = "Crear";
   }
 
@@ -27,24 +27,24 @@ export class EventTypesComponent implements OnInit {
     this.tiposEvento = this._settingsServices.getEventTypes();
   }
 
-  public selectEventType(eventType:EventType):void{
+  public selectEventType(eventType:TipoEvento):void{
     this.tipoEvento = Object.assign(this.tipoEvento, eventType);
     this.title = "Editar";
   }
 
   public cancel():void{
-    this.tipoEvento = new EventType();
+    this.tipoEvento = new TipoEvento();
     this.title = "Crear";
   }
 
-  public edit(eventType:EventType):void{
+  public edit(eventType:TipoEvento):void{
     //Invocar servicio editar
     let index = this.tiposEvento.findIndex(tipoEvento => tipoEvento.id === eventType.id);
     this.tiposEvento[index] = eventType;
     this.cancel();
   }
 
-  public create(eventType:EventType):void{
+  public create(eventType:TipoEvento):void{
     if(Object.hasOwnProperty.call(eventType,'id')){
       this.edit(eventType);
     }else{

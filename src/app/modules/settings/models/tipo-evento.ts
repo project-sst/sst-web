@@ -1,4 +1,4 @@
-export class EventType {
+export class TipoEvento {
 	id:number;
 	descripcionTipoEvento:string;
 }
