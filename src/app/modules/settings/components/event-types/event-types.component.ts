@@ -6,7 +6,7 @@ import { SettingsService } from './../../services/settings.service';
 @Component({
   selector: 'app-event-types',
   templateUrl: './event-types.component.html',
-  styleUrls: ['./event-types.component.css']
+  styleUrls: ['./event-types.component.scss']
 })
 export class EventTypesComponent implements OnInit {
 
