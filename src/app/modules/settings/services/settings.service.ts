@@ -12,11 +12,11 @@ export class SettingsService {
   public getEventTypes(){
   	return [
   		{
-  			id:1,
+  			idTipoEvento:1,
   			descripcionTipoEvento: 'Evento 1'
   		},
       {
-        id:2,
+        idTipoEvento:2,
         descripcionTipoEvento: 'Evento 2'
       }      
   	];

@@ -10,7 +10,7 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let evento of tiposEvento">
-					<td>{{evento.id}}</td>
+					<td>{{evento.idTipoEvento}}</td>
 					<td>{{evento.descripcionTipoEvento}}</td>
 					<td><button class="btn btn-sm btn-warning" (click)="selectEventType(evento)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
 				</tr>
@@ -24,7 +24,7 @@
 				<form>
 					<div class="form-group">
 						<label>ID</label>
-						<input class="form-control" type="number" name="id" [(ngModel)]="tipoEvento.id" disabled>
+						<input class="form-control" type="number" name="id" [(ngModel)]="tipoEvento.idTipoEvento" disabled>
 					</div>
 					<div class="form-group">
 						<label>Descripción tipo evento</label>

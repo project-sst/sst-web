@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TipoEvento } from './../../models/tipo-evento';
+import { Tipoevento } from './../../../../models/tipoevento';
 import { SettingsService } from './../../services/settings.service';
 
 @Component({
@@ -10,16 +10,16 @@ import { SettingsService } from './../../services/settings.service';
 })
 export class EventTypesComponent implements OnInit {
 
-	public tiposEvento:Array<TipoEvento>;
-  public tipoEvento:TipoEvento;
+	public tiposEvento:Array<Tipoevento>;
+  public tipoEvento:Tipoevento;
   public title:string;
   public idx:number = 3;
 
   constructor(
     private _settingsServices:SettingsService
   ) { 
-  	this.tiposEvento = new Array<TipoEvento>();
-    this.tipoEvento = new TipoEvento();
+  	this.tiposEvento = new Array<Tipoevento>();
+    this.tipoEvento = new Tipoevento();
     this.title = "Crear";
   }
 
@@ -27,29 +27,29 @@ export class EventTypesComponent implements OnInit {
     this.tiposEvento = this._settingsServices.getEventTypes();
   }
 
-  public selectEventType(eventType:TipoEvento):void{
+  public selectEventType(eventType:Tipoevento):void{
     this.tipoEvento = Object.assign(this.tipoEvento, eventType);
     this.title = "Editar";
   }
 
   public cancel():void{
-    this.tipoEvento = new TipoEvento();
+    this.tipoEvento = new Tipoevento();
     this.title = "Crear";
   }
 
-  public edit(eventType:TipoEvento):void{
+  public edit(eventType:Tipoevento):void{
     //Invocar servicio editar
-    let index = this.tiposEvento.findIndex(tipoEvento => tipoEvento.id === eventType.id);
+    let index = this.tiposEvento.findIndex(tipoEvento => tipoEvento.idTipoEvento === eventType.idTipoEvento);
     this.tiposEvento[index] = eventType;
     this.cancel();
   }
 
-  public create(eventType:TipoEvento):void{
+  public create(eventType:Tipoevento):void{
     if(Object.hasOwnProperty.call(eventType,'id')){
       this.edit(eventType);
     }else{
       //Invocar servicio crear
-      eventType.id = this.idx;      
+      eventType.idTipoEvento = this.idx;      
       this.tiposEvento.push(eventType);
       this.idx++;
       this.cancel();      
