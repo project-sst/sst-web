@@ -9,13 +9,15 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { GlobalComponent } from './components/global/global.component';
 import { EventTypesComponent } from './components/event-types/event-types.component';
+import { CitiesComponent } from './components/cities/cities.component';
 
 library.add(fas);
 
 @NgModule({
   declarations: [
   	GlobalComponent,
-  	EventTypesComponent
+  	EventTypesComponent,
+  	CitiesComponent
   ],
   imports: [
     CommonModule,

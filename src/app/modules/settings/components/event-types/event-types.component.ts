@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Tipoevento } from './../../../../models/tipoevento';
-import { SettingsService } from './../../services/settings.service';
+import { ParamtricasService,Tipoevento } from '@project-sst/sst-api';
 
 @Component({
   selector: 'app-event-types',
@@ -16,15 +15,28 @@ export class EventTypesComponent implements OnInit {
   public idx:number = 3;
 
   constructor(
-    private _settingsServices:SettingsService
+    private _parametricasServices:ParamtricasService
   ) { 
   	this.tiposEvento = new Array<Tipoevento>();
-    this.tipoEvento = new Tipoevento();
+    this.tipoEvento = {
+      idTipoEvento: null,
+      descripcionTipoEvento: ""
+    };
     this.title = "Crear";
   }
 
   ngOnInit() {
-    this.tiposEvento = this._settingsServices.getEventTypes();
+    this.getTipoEvento();
+  }
+
+  public getTipoEvento(){
+    this._parametricasServices.tipoeventoGet().subscribe(
+      res=>{
+        this.tiposEvento = <Array<Tipoevento>>res;
+      },error=>{
+        console.log(error);
+      }
+    );
   }
 
   public selectEventType(eventType:Tipoevento):void{
@@ -33,7 +45,10 @@ export class EventTypesComponent implements OnInit {
   }
 
   public cancel():void{
-    this.tipoEvento = new Tipoevento();
+    this.tipoEvento = {
+      idTipoEvento: null,
+      descripcionTipoEvento: ""
+    };;
     this.title = "Crear";
   }
 
@@ -49,10 +64,14 @@ export class EventTypesComponent implements OnInit {
       this.edit(eventType);
     }else{
       //Invocar servicio crear
-      eventType.idTipoEvento = this.idx;      
-      this.tiposEvento.push(eventType);
-      this.idx++;
-      this.cancel();      
+      this._parametricasServices.tipoeventoPost(eventType).subscribe(
+        res=>{
+          this.cancel();
+          this.getTipoEvento(); 
+        },error=>{
+          console.log(error);
+        }
+      );           
     }
   }
 

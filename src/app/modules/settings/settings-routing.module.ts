@@ -3,13 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 //Imports components
 import { GlobalComponent } from './components/global/global.component';
 import { EventTypesComponent } from './components/event-types/event-types.component';
+import { CitiesComponent } from './components/cities/cities.component';
 
 const routes: Routes = [
 	{path: 'settings',
 		children: [
 			{ path: '', redirectTo: 'global', pathMatch:'full' },
 			{ path: 'global', component: GlobalComponent },
-			{ path: 'event-types', component: EventTypesComponent }			
+			{ path: 'event-types', component: EventTypesComponent },			
+			{ path: 'cities', component: CitiesComponent }
 		]
 	}
 ];
