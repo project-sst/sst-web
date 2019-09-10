@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { NgxLoadingModule } from 'ngx-loading';
 //App imports 
 import { SettingsRoutingModule } from './settings-routing.module';
 import { GlobalComponent } from './components/global/global.component';
@@ -23,7 +24,8 @@ library.add(fas);
     CommonModule,
     FormsModule,
     SettingsRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxLoadingModule
   ]
 })
 export class SettingsModule { }

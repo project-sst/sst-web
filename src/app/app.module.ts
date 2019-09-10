@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { NgxLoadingModule } from 'ngx-loading';
 //Modules imports
 import { SettingsModule } from './modules/settings/settings.module';
 //Api imports
@@ -36,7 +37,8 @@ library.add(fas);
     FormsModule,
     HttpClientModule,
     ApiModule,
-    SettingsModule    
+    SettingsModule,
+    NgxLoadingModule.forRoot({})    
   ],
   providers: [{provide: BASE_PATH, useValue: environment.API_BASE_PATH}],
   bootstrap: [AppComponent]
