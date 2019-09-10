@@ -60,7 +60,7 @@ export class EventTypesComponent implements OnInit {
   }
 
   public create(eventType:Tipoevento):void{
-    if(Object.hasOwnProperty.call(eventType,'id')){
+    if(Object.hasOwnProperty.call(eventType,'idTipoEvento') && eventType.idTipoEvento){
       this.edit(eventType);
     }else{
       //Invocar servicio crear
