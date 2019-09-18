@@ -11,6 +11,7 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { GlobalComponent } from './components/global/global.component';
 import { EventTypesComponent } from './components/event-types/event-types.component';
 import { CitiesComponent } from './components/cities/cities.component';
+import { AccidentTypeComponent } from './components/accident-type/accident-type.component';
 
 library.add(fas);
 
@@ -18,7 +19,8 @@ library.add(fas);
   declarations: [
   	GlobalComponent,
   	EventTypesComponent,
-  	CitiesComponent
+  	CitiesComponent,
+  	AccidentTypeComponent
   ],
   imports: [
     CommonModule,
