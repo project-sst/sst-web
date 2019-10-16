@@ -12,15 +12,13 @@ export class CitiesComponent implements OnInit {
 	public ciudades:Array<Ciudad>;
 	public ciudad:Ciudad;
 	public title:string;
+  public loading:boolean = false;  
 
   constructor(
   	private _parametricasServices:ParamtricasService
   ) { 
   	this.ciudades = new Array<Ciudad>();
-  	this.ciudad = {
-  		idCiudad: null,
-  		nombreCiudad: ''
-  	};
+  	this.ciudad = new Ciudad();
   	this.title = "Crear";
   }
 
@@ -29,10 +27,13 @@ export class CitiesComponent implements OnInit {
   }
 
   public getCiudades(){
+    this.loading =true;
   	this._parametricasServices.ciudadGet().subscribe(
   		res=>{
+        this.loading =false;
   			this.ciudades = <Array<Ciudad>>res;
   		},error=>{
+        this.loading =false;
   			console.log(error);
   		}
   	);
@@ -45,14 +46,23 @@ export class CitiesComponent implements OnInit {
 
   public cancel():void{
     this.ciudad = {
-      idCiudad: null,
+      id: null,
       nombreCiudad: ""
     };;
     this.title = "Crear";
   }
 
   public edit(ciudad:Ciudad):void{
-    //Invocar servicio editar
+    this.loading =true;
+    this._parametricasServices.ciudadIdCiudadPut(ciudad.id, ciudad).subscribe(
+      res=>{
+        this.loading =false;
+        this.cancel();
+        this.getCiudades();       
+    },error=>{
+      this.loading =false;
+      console.log(error);
+    });
     this.cancel();
 
   }
@@ -61,9 +71,10 @@ export class CitiesComponent implements OnInit {
     if(Object.hasOwnProperty.call(ciudad,'id')){
       this.edit(ciudad);
     }else{
-      //Invocar servicio crear
+      this.loading =true;
       this._parametricasServices.ciudadPost(ciudad).subscribe(
         res=>{
+          this.loading =false;
           this.cancel();
           this.getCiudades(); 
         },error=>{

@@ -1,0 +1,56 @@
+<h1 class="text-center">Tipos de actidad</h1>
+<div class="row mt-5">
+	<div class="col-6">
+		<h2>Tipos de actividad actuales</h2>
+		<table class="table table-striped table-hover table-bordered">
+			<thead class="thead-dark">
+				<th scope="col">ID</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Meta</th>
+				<th scope="col">Objetivo</th>
+				<th scope="col">Editar</th>
+			</thead>
+			<tbody>
+				<tr *ngFor="let tipoAct of tiposActividad">
+					<td>{{tipoAct.id}}</td>
+					<td>{{tipoAct.NombreTActividad}}</td>
+					<td>{{tipoAct.meta}}</td>
+					<td>{{tipoAct.objetivo}}</td>
+					<td><button class="btn btn-sm btn-warning" (click)="select(tipoAct)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-6">
+		<h2>{{title}}</h2>
+		<div class="card">
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+						<label>ID</label>
+						<input class="form-control" type="number" name="id" [(ngModel)]="tipoActividad.id" disabled>
+					</div>
+					<div class="form-group">
+						<label>Nombre tipo de actividad</label>
+						<input class="form-control" type="text" name="desc" [(ngModel)]="tipoActividad.NombreTActividad">
+					</div>
+					<div class="form-group">
+						<label>Nombre tipo de actividad</label>
+						<input class="form-control" type="text" name="desc" [(ngModel)]="tipoActividad.NombreTActividad">
+					</div>
+					<div class="form-group">
+						<label>Meta de la actividad</label>
+						<input class="form-control" type="text" name="desc" [(ngModel)]="tipoActividad.meta">
+					</div>
+					<div class="form-group">
+						<label>Objetivo de la actividad</label>
+						<input class="form-control" type="text" name="desc" [(ngModel)]="tipoActividad.objetivo">
+					</div>															
+					<button class="btn btn-sm btn-primary mr-3" (click)="create(tipoActividad)">{{title}}</button>	
+					<button class="btn btn-sm btn-danger" (click)="cancel()">Cancelar</button>		
+				</form>
+			</div>
+		</div>
+	</div>	
+</div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>

@@ -52,7 +52,7 @@ export class AccidentTypeComponent implements OnInit {
 
   public edit(accidentType:Tipoaccidente):void{
     this.loading = true;
-    this._parametricasServices.tipoeventoIdTipoEventoPut(accidentType.idTipoAccidente, accidentType).subscribe(
+    this._parametricasServices.tipoaccidenteIdTipoAccidentePut(accidentType.id, accidentType).subscribe(
       res=>{
         this.loading = false;
         this.cancel();
@@ -65,11 +65,11 @@ export class AccidentTypeComponent implements OnInit {
   }
 
   public create(eventType:Tipoaccidente):void{
-    if(Object.hasOwnProperty.call(eventType,'idTipoEvento') && eventType.idTipoAccidente){
+    if(Object.hasOwnProperty.call(eventType,'id') && eventType.id){
       this.edit(eventType);
     }else{
       this.loading = true;
-      this._parametricasServices.tipoeventoPost(eventType).subscribe(
+      this._parametricasServices.tipoaccidentePost(eventType).subscribe(
         res=>{
           this.loading = false;
           this.cancel();

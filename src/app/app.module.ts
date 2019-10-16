@@ -20,6 +20,7 @@ import { ApiModule, BASE_PATH } from '@project-sst/sst-api';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { ContainerComponent } from './components/container/container.component';
 
 library.add(fas);
 
@@ -28,7 +29,8 @@ library.add(fas);
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,

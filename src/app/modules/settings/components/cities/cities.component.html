@@ -10,7 +10,7 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let ciudad of ciudades">
-					<td>{{ciudad.idCiudad}}</td>
+					<td>{{ciudad.id}}</td>
 					<td>{{ciudad.nombreCiudad}}</td>
 					<td><button class="btn btn-sm btn-warning" (click)="selectCiudad(ciudad)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
 				</tr>
@@ -24,7 +24,7 @@
 				<form>
 					<div class="form-group">
 						<label>ID</label>
-						<input class="form-control" type="number" name="id" [(ngModel)]="ciudad.idCiudad" disabled>
+						<input class="form-control" type="number" name="id" [(ngModel)]="ciudad.id" disabled>
 					</div>
 					<div class="form-group">
 						<label>Nombre ciudad</label>
@@ -37,3 +37,4 @@
 		</div>
 	</div>	
 </div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>	

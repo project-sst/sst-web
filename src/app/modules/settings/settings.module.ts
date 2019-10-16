@@ -12,6 +12,21 @@ import { GlobalComponent } from './components/global/global.component';
 import { EventTypesComponent } from './components/event-types/event-types.component';
 import { CitiesComponent } from './components/cities/cities.component';
 import { AccidentTypeComponent } from './components/accident-type/accident-type.component';
+import { ContractTypeComponent } from './components/contract-type/contract-type.component';
+import { SurveyQuestionsComponent } from './components/survey-questions/survey-questions.component';
+import { EvaluationSystemComponent } from './components/evaluation-system/evaluation-system.component';
+import { ComplianceEvidenceComponent } from './components/compliance-evidence/compliance-evidence.component';
+import { DisabilityDiagnosisComponent } from './components/disability-diagnosis/disability-diagnosis.component';
+import { FrecuencyComponent } from './components/frecuency/frecuency.component';
+import { SourceInformationComponent } from './components/source-information/source-information.component';
+import { DepartmentComponent } from './components/department/department.component';
+import { InjuryTypeComponent } from './components/injury-type/injury-type.component';
+import { IndicatorTypeComponent } from './components/indicator-type/indicator-type.component';
+import { ResourceTypeComponent } from './components/resource-type/resource-type.component';
+import { ResponsabilityTypeComponent } from './components/responsability-type/responsability-type.component';
+import { BodyPartComponent } from './components/body-part/body-part.component';
+import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
+import { InstructorSuitabilityComponent } from './components/instructor-suitability/instructor-suitability.component';
 
 library.add(fas);
 
@@ -20,7 +35,22 @@ library.add(fas);
   	GlobalComponent,
   	EventTypesComponent,
   	CitiesComponent,
-  	AccidentTypeComponent
+  	AccidentTypeComponent,
+  	ContractTypeComponent,
+  	SurveyQuestionsComponent,
+  	EvaluationSystemComponent,
+  	ComplianceEvidenceComponent,
+  	DisabilityDiagnosisComponent,
+  	FrecuencyComponent,
+  	SourceInformationComponent,
+  	DepartmentComponent,
+  	InjuryTypeComponent,
+  	IndicatorTypeComponent,
+  	ResourceTypeComponent,
+  	ResponsabilityTypeComponent,
+  	BodyPartComponent,
+  	ActivityTypeComponent,
+  	InstructorSuitabilityComponent
   ],
   imports: [
     CommonModule,

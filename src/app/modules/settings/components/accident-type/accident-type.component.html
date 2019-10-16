@@ -10,7 +10,7 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let accidente of tiposAccidente">
-					<td>{{accidente.idTipoAccidente}}</td>
+					<td>{{accidente.id}}</td>
 					<td>{{accidente.descripcionTipoAccidente}}</td>
 					<td><button class="btn btn-sm btn-warning" (click)="select(accidente)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
 				</tr>
@@ -24,7 +24,7 @@
 				<form>
 					<div class="form-group">
 						<label>ID</label>
-						<input class="form-control" type="number" name="id" [(ngModel)]="tipoAccidente.idTipoAccidente" disabled>
+						<input class="form-control" type="number" name="id" [(ngModel)]="tipoAccidente.id" disabled>
 					</div>
 					<div class="form-group">
 						<label>Descripción tipo accidente</label>
