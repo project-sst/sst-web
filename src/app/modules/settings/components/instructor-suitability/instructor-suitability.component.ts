@@ -1,4 +1,7 @@
+// Angular Imports
 import { Component, OnInit } from '@angular/core';
+// SST-API Imports
+import { ParamtricasService, Idoneidadinstructor } from '@project-sst/sst-api';
 
 @Component({
   selector: 'app-instructor-suitability',
@@ -7,9 +10,84 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructorSuitabilityComponent implements OnInit {
 
-  constructor() { }
+	public idoneidadesInstructor:Array<Idoneidadinstructor>;
+  public idoneidadInstructor:Idoneidadinstructor;
+  public title:string;
+  public loading:boolean = false;
+  public error:boolean = false;
+  public messageError:string;
 
-  ngOnInit() {
+  constructor(
+  	private _parametricasServices:ParamtricasService
+  ) { 
+  	this.idoneidadesInstructor = new Array<Idoneidadinstructor>();
+    this.idoneidadInstructor = new Idoneidadinstructor();
+    this.title = "Crear";
+    this.messageError = "";
   }
 
+  ngOnInit() {
+  	this.getInstructorSuitabilitys();
+  }
+
+  public getInstructorSuitabilitys(){
+    this.loading = true;
+    this._parametricasServices.idoneidadInstructorGet().subscribe(
+      res=>{
+        this.loading = false;
+        this.idoneidadesInstructor = <Array<Idoneidadinstructor>>res;
+      },error=>{
+        this.loading = false;
+        this.error = true;
+        this.messageError = "No se han podido obtener las idoneidades de instructor";
+        console.log(error);
+      }
+    );
+  }
+
+  public select(instructorSuitability:Idoneidadinstructor):void{
+    this.idoneidadInstructor = Object.assign(this.idoneidadInstructor, instructorSuitability);
+    this.title = "Editar";
+  }
+
+  public cancel():void{
+    this.idoneidadInstructor = new Idoneidadinstructor();
+    this.title = "Crear";
+  }
+
+  public edit(instructorSuitability:Idoneidadinstructor):void{
+    this.loading = true;
+    this._parametricasServices.idoneidadInstructorIdIdoneidadInstructorPut(instructorSuitability.id, instructorSuitability).subscribe(
+      res=>{
+        this.loading = false;
+        this.cancel();
+        this.getInstructorSuitabilitys();       
+    },error=>{
+      this.loading = false;
+        this.error = true;
+        this.messageError = "No se ha podido editar la idoneidad del instructor";      
+      console.log(error);
+    });
+    this.cancel();
+  }
+
+  public create(instructorSuitability:Idoneidadinstructor):void{
+    if(Object.hasOwnProperty.call(instructorSuitability,'id') && instructorSuitability.id){
+      this.edit(instructorSuitability);
+    }else{
+      this.loading = true;
+      this._parametricasServices.idoneidadInstructorPost(instructorSuitability).subscribe(
+        res=>{
+          this.loading = false;
+          this.cancel();
+          this.getInstructorSuitabilitys(); 
+        },error=>{
+          this.loading = false;
+          this.error = true;
+          this.messageError = "No se ha podido crear la idoneidad del instructor";          
+          console.log(error);
+        }
+      );           
+    }
+  }
 }

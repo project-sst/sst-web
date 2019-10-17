@@ -1,4 +1,7 @@
+// Angular Imports
 import { Component, OnInit } from '@angular/core';
+// SST-API Imports
+import { ParamtricasService, Partecuerpo } from '@project-sst/sst-api';
 
 @Component({
   selector: 'app-body-part',
@@ -7,9 +10,84 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyPartComponent implements OnInit {
 
-  constructor() { }
+	public partesCuerpo:Array<Partecuerpo>;
+  public parteCuerpo:Partecuerpo;
+  public title:string;
+  public loading:boolean = false;
+  public error:boolean = false;
+  public messageError:string;
 
-  ngOnInit() {
+  constructor(
+  	private _parametricasServices:ParamtricasService
+  ) { 
+  	this.partesCuerpo = new Array<Partecuerpo>();
+    this.parteCuerpo = new Partecuerpo();
+    this.title = "Crear";
+    this.messageError = "";
   }
 
+  ngOnInit() {
+  	this.getBodyParts();
+  }
+
+  public getBodyParts(){
+    this.loading = true;
+    this._parametricasServices.partecuerpoGet().subscribe(
+      res=>{
+        this.loading = false;
+        this.partesCuerpo = <Array<Partecuerpo>>res;
+      },error=>{
+        this.loading = false;
+        this.error = true;
+        this.messageError = "No se han podido obtener las partes del cuerpo";
+        console.log(error);
+      }
+    );
+  }
+
+  public select(bodyPart:Partecuerpo):void{
+    this.parteCuerpo = Object.assign(this.parteCuerpo, bodyPart);
+    this.title = "Editar";
+  }
+
+  public cancel():void{
+    this.parteCuerpo = new Partecuerpo();
+    this.title = "Crear";
+  }
+
+  public edit(bodyPart:Partecuerpo):void{
+    this.loading = true;
+    this._parametricasServices.partecuerpoIdParteCuerpoPut(bodyPart.id, bodyPart).subscribe(
+      res=>{
+        this.loading = false;
+        this.cancel();
+        this.getBodyParts();       
+    },error=>{
+      this.loading = false;
+        this.error = true;
+        this.messageError = "No se ha podido editar la parte del cuerpo";      
+      console.log(error);
+    });
+    this.cancel();
+  }
+
+  public create(bodyPart:Partecuerpo):void{
+    if(Object.hasOwnProperty.call(bodyPart,'id') && bodyPart.id){
+      this.edit(bodyPart);
+    }else{
+      this.loading = true;
+      this._parametricasServices.partecuerpoPost(bodyPart).subscribe(
+        res=>{
+          this.loading = false;
+          this.cancel();
+          this.getBodyParts(); 
+        },error=>{
+          this.loading = false;
+          this.error = true;
+          this.messageError = "No se ha podido crear la parte del cuerpo";          
+          console.log(error);
+        }
+      );           
+    }
+  }
 }

@@ -12,7 +12,9 @@ export class CitiesComponent implements OnInit {
 	public ciudades:Array<Ciudad>;
 	public ciudad:Ciudad;
 	public title:string;
-  public loading:boolean = false;  
+  public loading:boolean = false;
+  public error:boolean = false;
+  public messageError:string;    
 
   constructor(
   	private _parametricasServices:ParamtricasService
@@ -34,6 +36,8 @@ export class CitiesComponent implements OnInit {
   			this.ciudades = <Array<Ciudad>>res;
   		},error=>{
         this.loading =false;
+        this.error = true;
+        this.messageError = "No se pudieron obtener las ciudades";        
   			console.log(error);
   		}
   	);
@@ -61,6 +65,8 @@ export class CitiesComponent implements OnInit {
         this.getCiudades();       
     },error=>{
       this.loading =false;
+      this.error = true;
+      this.messageError = "No se pudo editar la ciudad";      
       console.log(error);
     });
     this.cancel();
@@ -78,6 +84,8 @@ export class CitiesComponent implements OnInit {
           this.cancel();
           this.getCiudades(); 
         },error=>{
+          this.error = true;
+          this.messageError = "No se pudo crear la ciudad";          
           console.log(error);
         }
       );           

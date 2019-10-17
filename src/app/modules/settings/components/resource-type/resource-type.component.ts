@@ -1,4 +1,7 @@
+// Angular Imports
 import { Component, OnInit } from '@angular/core';
+// SST-API Imports
+import { ParamtricasService, Tiporecurso } from '@project-sst/sst-api';
 
 @Component({
   selector: 'app-resource-type',
@@ -7,9 +10,85 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourceTypeComponent implements OnInit {
 
-  constructor() { }
+	public tiposRecurso:Array<Tiporecurso>;
+  public tipoRecurso:Tiporecurso;
+  public title:string;
+  public loading:boolean = false;
+  public error:boolean = false;
+  public messageError:string;
+
+  constructor(
+  	private _parametricasServices:ParamtricasService
+  ) { 
+  	this.tiposRecurso = new Array<Tiporecurso>();
+    this.tipoRecurso = new Tiporecurso();
+    this.title = "Crear";
+    this.messageError = "";
+  }
 
   ngOnInit() {
+  	this.getResourceTypes();
+  }
+
+  public getResourceTypes(){
+    this.loading = true;
+    this._parametricasServices.tiporecursoGet().subscribe(
+      res=>{
+        this.loading = false;
+        this.tiposRecurso = <Array<Tiporecurso>>res;
+      },error=>{
+        this.loading = false;
+        this.error = true;
+        this.messageError = "No se han podido obtener los tipos de recursos";
+        console.log(error);
+      }
+    );
+  }
+
+  public select(resourceType:Tiporecurso):void{
+    this.tipoRecurso = Object.assign(this.tipoRecurso, resourceType);
+    this.title = "Editar";
+  }
+
+  public cancel():void{
+    this.tipoRecurso = new Tiporecurso();
+    this.title = "Crear";
+  }
+
+  public edit(resourceType:Tiporecurso):void{
+    this.loading = true;
+    this._parametricasServices.tiporecursoIdTipoRecursoPut(resourceType.id, resourceType).subscribe(
+      res=>{
+        this.loading = false;
+        this.cancel();
+        this.getResourceTypes();       
+    },error=>{
+      this.loading = false;
+        this.error = true;
+        this.messageError = "No se ha podido editar el tipo de recurso";      
+      console.log(error);
+    });
+    this.cancel();
+  }
+
+  public create(resourceType:Tiporecurso):void{
+    if(Object.hasOwnProperty.call(resourceType,'id') && resourceType.id){
+      this.edit(resourceType);
+    }else{
+      this.loading = true;
+      this._parametricasServices.tiporecursoPost(resourceType).subscribe(
+        res=>{
+          this.loading = false;
+          this.cancel();
+          this.getResourceTypes(); 
+        },error=>{
+          this.loading = false;
+          this.error = true;
+          this.messageError = "No se ha podido crear el tipo de recurso";          
+          console.log(error);
+        }
+      );           
+    }
   }
 
 }

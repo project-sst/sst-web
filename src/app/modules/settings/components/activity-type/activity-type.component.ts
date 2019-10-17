@@ -13,7 +13,9 @@ export class ActivityTypeComponent implements OnInit {
 	public tiposActividad:Array<Tipoactividad>;
   public tipoActividad:Tipoactividad;
   public title:string;
-  public loading:boolean = false;	
+  public loading:boolean = false;
+  public error:boolean = false;
+  public messageError:string;  	
 
   constructor(
   	private _parametricasServices:ParamtricasService
@@ -35,6 +37,8 @@ export class ActivityTypeComponent implements OnInit {
         this.tiposActividad = <Array<Tipoactividad>>res;
       },error=>{
         this.loading = false;
+        this.error = true;
+        this.messageError = "No se pudieron obtener los tipos de actividad";        
         console.log(error);
       }
     );
@@ -59,6 +63,8 @@ export class ActivityTypeComponent implements OnInit {
         this.getActivityTypes();       
     },error=>{
       this.loading = false;
+      this.error = true;
+      this.messageError = "No se pudo editar el tipo de actividad";      
       console.log(error);
     });
     this.cancel();
@@ -76,6 +82,8 @@ export class ActivityTypeComponent implements OnInit {
           this.getActivityTypes(); 
         },error=>{
           this.loading = false;
+          this.error = true;
+          this.messageError = "No se pudo crear el tipo de actividad";          
           console.log(error);
         }
       );           

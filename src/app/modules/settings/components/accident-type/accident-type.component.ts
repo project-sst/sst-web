@@ -14,6 +14,8 @@ export class AccidentTypeComponent implements OnInit {
   public tipoAccidente:Tipoaccidente;
   public title:string;
   public loading:boolean = false;
+  public error:boolean = false;
+  public messageError:string;  
 
   constructor(
   	private _parametricasServices:ParamtricasService
@@ -35,6 +37,8 @@ export class AccidentTypeComponent implements OnInit {
         this.tiposAccidente = <Array<Tipoaccidente>>res;
       },error=>{
         this.loading = false;
+        this.error = true;
+        this.messageError = "No se pudieron obtener los tipos de accidente";        
         console.log(error);
       }
     );
@@ -59,23 +63,27 @@ export class AccidentTypeComponent implements OnInit {
         this.getAccidentType();       
     },error=>{
       this.loading = false;
+      this.error = true;
+      this.messageError = "No se pudo editar el tipo de accidente";      
       console.log(error);
     });
     this.cancel();
   }
 
-  public create(eventType:Tipoaccidente):void{
-    if(Object.hasOwnProperty.call(eventType,'id') && eventType.id){
-      this.edit(eventType);
+  public create(accidentType:Tipoaccidente):void{
+    if(Object.hasOwnProperty.call(accidentType,'id') && accidentType.id){
+      this.edit(accidentType);
     }else{
       this.loading = true;
-      this._parametricasServices.tipoaccidentePost(eventType).subscribe(
+      this._parametricasServices.tipoaccidentePost(accidentType).subscribe(
         res=>{
           this.loading = false;
           this.cancel();
           this.getAccidentType(); 
         },error=>{
           this.loading = false;
+          this.error = true;
+          this.messageError = "No se pudo crear el tipo de accidente";          
           console.log(error);
         }
       );           

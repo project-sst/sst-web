@@ -14,6 +14,8 @@ export class EventTypesComponent implements OnInit {
   public tipoEvento:Tipoevento;
   public title:string;
   public loading:boolean = false;
+  public error:boolean = false;
+  public messageError:string;  
 
   constructor(
     private _parametricasServices:ParamtricasService
@@ -35,6 +37,8 @@ export class EventTypesComponent implements OnInit {
         this.tiposEvento = <Array<Tipoevento>>res;
       },error=>{
         this.loading = false;
+        this.error = true;
+        this.messageError = "No se pudieron obtener los tipo de envento";        
         console.log(error);
       }
     );
@@ -59,6 +63,8 @@ export class EventTypesComponent implements OnInit {
         this.getTipoEvento();       
     },error=>{
       this.loading = false;
+      this.error = true;
+      this.messageError = "No se pudo editar el tipo de evento";      
       console.log(error);
     });
     this.cancel();
@@ -76,6 +82,8 @@ export class EventTypesComponent implements OnInit {
           this.getTipoEvento(); 
         },error=>{
           this.loading = false;
+          this.error = true;
+          this.messageError = "No se pudo crear el tipo de evento";          
           console.log(error);
         }
       );           
