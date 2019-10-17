@@ -76,7 +76,7 @@ export class SourceInformationComponent implements OnInit {
       this.edit(sourceInformation);
     }else{
       this.loading = true;
-      this._parametricasServices.sistemaevaluacionPost(sourceInformation).subscribe(
+      this._parametricasServices.fuenteinformacionPost(sourceInformation).subscribe(
         res=>{
           this.loading = false;
           this.cancel();

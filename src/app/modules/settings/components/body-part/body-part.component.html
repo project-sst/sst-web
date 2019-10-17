@@ -1,3 +1,46 @@
-<p>
-  body-part works!
-</p>
+<h1 class="text-center">Partes del cuerpo</h1>
+<div class="row mt-5">
+	<div class="col-6">
+		<h2>Partes del cuerpo actuales</h2>
+		<table class="table table-striped table-hover table-bordered">
+			<thead class="thead-dark">
+				<th scope="col">ID</th>
+				<th scope="col">Descripción</th>
+				<th scope="col">Editar</th>
+			</thead>
+			<tbody>
+				<tr *ngFor="let parte of partesCuerpo">
+					<td>{{parte.id}}</td>
+					<td>{{parte.descripcionParteCuerpo}}</td>
+					<td><button class="btn btn-sm btn-warning" (click)="select(parte)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-6">
+		<h2>{{title}}</h2>
+		<div class="card">
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+						<label>ID</label>
+						<input class="form-control" type="number" name="id" [(ngModel)]="parteCuerpo.id" disabled>
+					</div>
+					<div class="form-group">
+						<label>Descripción parte del cuerpo</label>
+						<input class="form-control" type="text" name="desc" [(ngModel)]="parteCuerpo.descripcionParteCuerpo">
+					</div>
+					<button class="btn btn-sm btn-primary mr-3" (click)="create(parteCuerpo)">{{title}}</button>	
+					<button class="btn btn-sm btn-danger" (click)="cancel()">Cancelar</button>		
+				</form>
+			</div>
+		</div>
+	</div>	
+</div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+  <strong>Error</strong> <p>{{messageError}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error = false;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

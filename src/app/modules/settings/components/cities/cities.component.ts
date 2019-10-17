@@ -43,16 +43,13 @@ export class CitiesComponent implements OnInit {
   	);
   }
 
-  public selectCiudad(ciudad:Ciudad):void{
+  public select(ciudad:Ciudad):void{
     this.ciudad = Object.assign(this.ciudad, ciudad);
     this.title = "Editar";
   }
 
   public cancel():void{
-    this.ciudad = {
-      id: null,
-      nombreCiudad: ""
-    };;
+    this.ciudad = new Ciudad();
     this.title = "Crear";
   }
 
@@ -74,7 +71,7 @@ export class CitiesComponent implements OnInit {
   }
 
   public create(ciudad:Ciudad):void{
-    if(Object.hasOwnProperty.call(ciudad,'id')){
+    if(Object.hasOwnProperty.call(ciudad,'id') || ciudad.id != null){
       this.edit(ciudad);
     }else{
       this.loading =true;
@@ -82,7 +79,7 @@ export class CitiesComponent implements OnInit {
         res=>{
           this.loading =false;
           this.cancel();
-          this.getCiudades(); 
+          this.getCiudades();           
         },error=>{
           this.error = true;
           this.messageError = "No se pudo crear la ciudad";          

@@ -12,7 +12,7 @@
 				<tr *ngFor="let evento of tiposEvento">
 					<td>{{evento.id}}</td>
 					<td>{{evento.descripcionTipoEvento}}</td>
-					<td><button class="btn btn-sm btn-warning" (click)="selectEventType(evento)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
+					<td><button class="btn btn-sm btn-warning" (click)="select(evento)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -38,3 +38,9 @@
 	</div>	
 </div>
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+  <strong>Error</strong> <p>{{messageError}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error = false;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

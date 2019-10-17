@@ -1,3 +1,46 @@
-<p>
-  department works!
-</p>
+<h1 class="text-center">Departamentos de la empresa</h1>
+<div class="row mt-5">
+	<div class="col-6">
+		<h2>Departamentos de la empresa actuales</h2>
+		<table class="table table-striped table-hover table-bordered">
+			<thead class="thead-dark">
+				<th scope="col">ID</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Editar</th>
+			</thead>
+			<tbody>
+				<tr *ngFor="let depart of departamentos">
+					<td>{{depart.id}}</td>
+					<td>{{depart.NombreDepartamento}}</td>
+					<td><button class="btn btn-sm btn-warning" (click)="select(depart)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-6">
+		<h2>{{title}}</h2>
+		<div class="card">
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+						<label>ID</label>
+						<input class="form-control" type="number" name="id" [(ngModel)]="departamento.id" disabled>
+					</div>
+					<div class="form-group">
+						<label>Nombre departamento</label>
+						<input class="form-control" type="text" name="desc" [(ngModel)]="departamento.NombreDepartamento">
+					</div>
+					<button class="btn btn-sm btn-primary mr-3" (click)="create(departamento)">{{title}}</button>	
+					<button class="btn btn-sm btn-danger" (click)="cancel()">Cancelar</button>		
+				</form>
+			</div>
+		</div>
+	</div>	
+</div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+  <strong>Error</strong> <p>{{messageError}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error = false;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

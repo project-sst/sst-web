@@ -44,7 +44,7 @@ export class EventTypesComponent implements OnInit {
     );
   }
 
-  public selectEventType(eventType:Tipoevento):void{
+  public select(eventType:Tipoevento):void{
     this.tipoEvento = Object.assign(this.tipoEvento, eventType);
     this.title = "Editar";
   }

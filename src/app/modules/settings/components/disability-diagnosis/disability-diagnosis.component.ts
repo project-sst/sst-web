@@ -76,7 +76,7 @@ export class DisabilityDiagnosisComponent implements OnInit {
       this.edit(disabilityDiagnosis);
     }else{
       this.loading = true;
-      this._parametricasServices.sistemaevaluacionPost(disabilityDiagnosis).subscribe(
+      this._parametricasServices.diagnosticoincapacidadPost(disabilityDiagnosis).subscribe(
         res=>{
           this.loading = false;
           this.cancel();
