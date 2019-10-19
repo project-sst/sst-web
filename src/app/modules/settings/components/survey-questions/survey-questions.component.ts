@@ -1,7 +1,9 @@
 // Angular Imports
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 // SST-API Imports
-import { ParamtricasService, Preguntasencuesta } from '@project-sst/sst-api';
+import { ParamtricasService, Preguntasencuesta, Configuration } from '@project-sst/sst-api';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-survey-questions',
@@ -16,10 +18,13 @@ export class SurveyQuestionsComponent implements OnInit {
   public messageError:string;
   public error:boolean = false;
   public loading:boolean = false;	
+  public configuration = new Configuration(); 
 
   constructor(
-		private _parametricasServices:ParamtricasService
+    private _parametricasServices:ParamtricasService,
+    private _http:HttpClient
   ) { 
+    this._parametricasServices = new ParamtricasService(this._http,environment.API_BASE_PATH,this.configuration); 
   	this.preguntasEncuesta = new Array<Preguntasencuesta>();
     this.preguntaEncuesta = new Preguntasencuesta();
     this.title = "Crear";

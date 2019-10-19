@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { ParamtricasService, Ciudad } from '@project-sst/sst-api';
+import { ParamtricasService, Ciudad, Configuration } from '@project-sst/sst-api';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-citys',
@@ -14,11 +16,14 @@ export class CitiesComponent implements OnInit {
 	public title:string;
   public loading:boolean = false;
   public error:boolean = false;
-  public messageError:string;    
+  public messageError:string;   
+  public configuration = new Configuration();  
 
   constructor(
-  	private _parametricasServices:ParamtricasService
+    private _parametricasServices:ParamtricasService,
+    private _http:HttpClient
   ) { 
+    this._parametricasServices = new ParamtricasService(this._http,environment.API_BASE_PATH,this.configuration);
   	this.ciudades = new Array<Ciudad>();
   	this.ciudad = new Ciudad();
   	this.title = "Crear";

@@ -13,7 +13,7 @@
 			<tbody>
 				<tr *ngFor="let tipoAct of tiposActividad">
 					<td>{{tipoAct.id}}</td>
-					<td>{{tipoAct.NombreTActividad}}</td>
+					<td>{{tipoAct.nombreTActividad}}</td>
 					<td>{{tipoAct.meta}}</td>
 					<td>{{tipoAct.objetivo}}</td>
 					<td><button class="btn btn-sm btn-warning" (click)="select(tipoAct)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
@@ -32,7 +32,7 @@
 					</div>
 					<div class="form-group">
 						<label>Nombre tipo de actividad</label>
-						<input class="form-control" type="text" name="desc" [(ngModel)]="tipoActividad.NombreTActividad">
+						<input class="form-control" type="text" name="desc" [(ngModel)]="tipoActividad.nombreTActividad">
 					</div>
 					<div class="form-group">
 						<label>Meta de la actividad</label>
@@ -49,7 +49,7 @@
 		</div>
 	</div>	
 </div>
-<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 <div *ngIf="error" class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
   <strong>Error</strong> <p>{{messageError}}</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error = false;">

@@ -11,7 +11,7 @@
 			<tbody>
 				<tr *ngFor="let frec of frecuencias">
 					<td>{{frec.id}}</td>
-					<td>{{frec.NombreFrecuencia}}</td>
+					<td>{{frec.nombreFrecuencia}}</td>
 					<td><button class="btn btn-sm btn-warning" (click)="select(frec)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
 				</tr>
 			</tbody>
@@ -28,7 +28,7 @@
 					</div>
 					<div class="form-group">
 						<label>Nombre</label>
-						<input class="form-control" type="text" name="desc" [(ngModel)]="frecuencia.NombreFrecuencia">
+						<input class="form-control" type="text" name="desc" [(ngModel)]="frecuencia.nombreFrecuencia">
 					</div>
 					<button class="btn btn-sm btn-primary mr-3" (click)="create(frecuencia)">{{title}}</button>	
 					<button class="btn btn-sm btn-danger" (click)="cancel()">Cancelar</button>		
@@ -37,7 +37,7 @@
 		</div>
 	</div>	
 </div>
-<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 <div *ngIf="error" class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
   <strong>Error</strong> <p>{{messageError}}</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error = false;">

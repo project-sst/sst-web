@@ -1,7 +1,9 @@
 // Angular Imports
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 // SST-API Imports
-import { ParamtricasService, Evidenciacumplimiento } from '@project-sst/sst-api';
+import { ParamtricasService, Evidenciacumplimiento, Configuration } from '@project-sst/sst-api';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-compliance-evidence',
@@ -16,10 +18,13 @@ export class ComplianceEvidenceComponent implements OnInit {
   public loading:boolean = false;
   public error:boolean = false;
   public messageError:string;
+  public configuration = new Configuration(); 
 
   constructor(
-  	private _parametricasServices:ParamtricasService
+    private _parametricasServices:ParamtricasService,
+    private _http:HttpClient
   ) { 
+    this._parametricasServices = new ParamtricasService(this._http,environment.API_BASE_PATH,this.configuration);
   	this.evidenciasCumplimiento = new Array<Evidenciacumplimiento>();
     this.evidenciaCumplimiento = new Evidenciacumplimiento();
     this.title = "Crear";

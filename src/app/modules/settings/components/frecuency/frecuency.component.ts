@@ -1,7 +1,9 @@
 // Angular Imports
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 // SST-API Imports
-import { ParamtricasService, Frecuencia } from '@project-sst/sst-api';
+import { ParamtricasService, Frecuencia, Configuration } from '@project-sst/sst-api';
+import { environment } from '../../../../../environments/environment';
 
 
 @Component({
@@ -17,10 +19,13 @@ export class FrecuencyComponent implements OnInit {
   public loading:boolean = false;
   public error:boolean = false;
   public messageError:string;
+  public configuration = new Configuration(); 
 
   constructor(
-  	private _parametricasServices:ParamtricasService
+    private _parametricasServices:ParamtricasService,
+    private _http:HttpClient
   ) { 
+    this._parametricasServices = new ParamtricasService(this._http,environment.API_BASE_PATH,this.configuration);
   	this.frecuencias = new Array<Frecuencia>();
     this.frecuencia = new Frecuencia();
     this.title = "Crear";
