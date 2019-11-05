@@ -14,6 +14,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgxLoadingModule } from 'ngx-loading';
 //Modules imports
 import { SettingsModule } from './modules/settings/settings.module';
+import { CompaniesModule } from './modules/companies/companies.module';
 //Api imports
 import { ApiModule, BASE_PATH } from '@project-sst/sst-api';
 //Main components imports
@@ -40,6 +41,7 @@ library.add(fas);
     HttpClientModule,
     ApiModule,
     SettingsModule,
+    CompaniesModule,
     NgxLoadingModule.forRoot({})    
   ],
   providers: [{provide: BASE_PATH, useValue: environment.API_BASE_PATH}],

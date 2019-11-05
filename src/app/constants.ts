@@ -6,8 +6,8 @@ export const MENU: Array<any> = [
 	},
 	*/
 	{
-		name: "Actividades",
-		route: "/activities"
+		name: "Empresas",
+		route: "/companies"
 	},
 	{
 		name: "Indicadores",

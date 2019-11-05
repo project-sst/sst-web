@@ -1,0 +1,91 @@
+<h1 class="text-center">Empresas</h1>
+<div class="row mt-5">
+	<div class="col-6">
+		<h2>Empresas</h2>
+		<table class="table table-striped table-hover table-bordered">
+			<thead class="thead-dark">
+				<th scope="col">ID</th>
+				<th scope="col">Nit</th>
+				<th scope="col">Razón social</th>
+				<th scope="col">Teléfono</th>
+				<th scope="col">Dirección</th>
+				<th scope="col">Logo</th>
+				<th scope="col">Actividad Comercial</th>
+				<th scope="col">Tipo empresa</th>
+				<th scope="col">Ciudad</th>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of empresas">
+					<td>{{item.id}}</td>
+					<td>{{item.nit}}</td>
+					<td>{{item.razonSocial}}</td>
+					<td>{{item.telefono}}</td>
+					<td>{{item.direccion}}</td>
+					<td>{{item.logo}}</td>
+					<td>{{item.actividadComercial}}</td>
+					<td>{{item.tipoEmpresa}}</td>
+					<td>{{item.ciudad}}</td>
+					<td><button class="btn btn-sm btn-warning" (click)="select(item)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-6">
+		<h2>{{title}}</h2>
+		<div class="card">
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+						<label>ID</label>
+						<input class="form-control" type="number" name="id" [(ngModel)]="empresa.id" disabled>
+					</div>
+					<div class="form-group">
+						<label>NIT</label>
+						<input class="form-control" type="text" name="nit" [(ngModel)]="empresa.nit">
+					</div>
+					<div class="form-group">
+						<label>Razón social</label>
+						<input class="form-control" type="text" name="razonSocial" [(ngModel)]="empresa.razonSocial">
+					</div>
+					<div class="form-group">
+						<label>Teléfono</label>
+						<input class="form-control" type="text" name="telefono" [(ngModel)]="empresa.telefono">
+					</div>
+					<div class="form-group">
+						<label>Dirección</label>
+						<input class="form-control" type="text" name="direccion" [(ngModel)]="empresa.direccion">
+					</div>	
+					<div class="form-group">
+						<label>Logo</label>
+						<input class="form-control" type="text" name="logo" [(ngModel)]="empresa.logo">
+					</div>	
+					<div class="form-group">
+						<label>Actividad Comercial</label>
+						<input class="form-control" type="text" name="actividadComercial" [(ngModel)]="empresa.actividadComercial">
+					</div>			
+					<div class="form-group">
+						<label>Tipo de empresa</label>
+						<select class="form-control" name="tipoEmpresa" [(ngModel)]="empresa.tipoEmpresa">
+							<option *ngFor="let tipo of tiposEmpresa" [ngValue]="tipo">{{tipo.nombre}}</option>
+						</select>
+					</div>	
+					<div class="form-group">
+						<label>Ciudad</label>
+						<select class="form-control" name="ciudad" [(ngModel)]="empresa.ciudad">
+							<option *ngFor="let ciudad of ciudades" [ngValue]="tipo">{{ciudad.nombreCiudad}}</option>
+						</select>
+					</div>																																	
+					<button class="btn btn-sm btn-primary mr-3" (click)="create(empresa)">{{title}}</button>	
+					<button class="btn btn-sm btn-danger" (click)="cancel()">Cancelar</button>		
+				</form>
+			</div>
+		</div>
+	</div>	
+</div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+  <strong>Error</strong> <p>{{messageError}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error = false;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
