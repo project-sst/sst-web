@@ -20,6 +20,7 @@ import { ResponsabilityTypeComponent } from './components/responsability-type/re
 import { BodyPartComponent } from './components/body-part/body-part.component';
 import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
 import { InstructorSuitabilityComponent } from './components/instructor-suitability/instructor-suitability.component';
+import { CompanyTypesComponent } from './components/company-types/company-types.component';
 
 const routes: Routes = [
 	{path: 'settings',
@@ -43,7 +44,8 @@ const routes: Routes = [
 			{ path: 'responsability-types', component: ResponsabilityTypeComponent },
 			{ path: 'body-parts', component: BodyPartComponent },
 			{ path: 'activity-types', component: ActivityTypeComponent },
-			{ path: 'instructor-suitability', component: InstructorSuitabilityComponent }
+			{ path: 'instructor-suitability', component: InstructorSuitabilityComponent },
+			{ path: 'company-types', component: CompanyTypesComponent }
 		]
 	}
 ];

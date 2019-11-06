@@ -27,6 +27,7 @@ import { ResponsabilityTypeComponent } from './components/responsability-type/re
 import { BodyPartComponent } from './components/body-part/body-part.component';
 import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
 import { InstructorSuitabilityComponent } from './components/instructor-suitability/instructor-suitability.component';
+import { CompanyTypesComponent } from './components/company-types/company-types.component';
 
 library.add(fas);
 
@@ -50,7 +51,8 @@ library.add(fas);
   	ResponsabilityTypeComponent,
   	BodyPartComponent,
   	ActivityTypeComponent,
-  	InstructorSuitabilityComponent
+  	InstructorSuitabilityComponent,
+  	CompanyTypesComponent
   ],
   imports: [
     CommonModule,
